@@ -56,12 +56,21 @@ module Enumerable
       self.each do |element| 
         results << element if yield(element) 
       end 
-    return results.length  
+      return results.length  
     else 
       return self.length 
     end
   end
- 
+  
+  def my_map 
+    results = [] 
+    if block_given? 
+      self.each do |element| 
+        results << yield(element) 
+      end
+    end 
+    return results
+  end
   # Your code goes here
 end
 
