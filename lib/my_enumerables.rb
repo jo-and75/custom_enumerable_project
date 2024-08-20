@@ -10,6 +10,14 @@ module Enumerable
       end
     end 
     return self
+  end 
+
+  def my_select  
+    results = []
+    self.my_each do |element| 
+      results << element if yield(element) 
+    end
+     return results
   end
   # my_each
   # Your code goes here
