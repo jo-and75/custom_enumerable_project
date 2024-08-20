@@ -1,4 +1,5 @@
-module Enumerable
+module Enumerable  
+  # my_each
   # Your code goes here
 end
 
@@ -7,5 +8,17 @@ end
 # your enumerable module will have access
 # to this method
 class Array
-  # Define my_each here
+  # Define my_each here 
+  def my_each 
+    if block_given?   
+      i = 0
+      until i == self.length do 
+        yield(self[i]) 
+        i += 1 
+      end
+    end
+    return self
+  end 
+
+
 end
