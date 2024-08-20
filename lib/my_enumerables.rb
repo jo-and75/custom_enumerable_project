@@ -1,4 +1,16 @@
-module Enumerable  
+module Enumerable   
+  def my_each_with_index  
+    if block_given?   
+      index = 0 
+      until index == self.length
+        self.my_each do |element|
+          yield(element,index) 
+          index += 1
+        end 
+      end
+    end 
+    return self
+  end
   # my_each
   # Your code goes here
 end
