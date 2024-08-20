@@ -18,8 +18,50 @@ module Enumerable
       results << element if yield(element) 
     end
      return results
+  end 
+
+  def my_all? 
+    results = [] 
+    self.my_each do |element| 
+      results << element if yield(element) 
+    end 
+    if results.length == self.length 
+      return true 
+    else 
+      return false 
+    end 
+  end 
+
+  def my_any?  
+    results = []
+    self.my_each do |element| 
+      results << element if yield(element)
+    end
+    return true if results.length > 0  
+    return false if results.length <= 0
+  end 
+
+  def my_none?  
+    results = [] 
+    self.my_each do |element| 
+      results << element if yield(element) 
+    end 
+    return true if results.length <= 0 
+    return false if results.length > 0
+  end 
+
+  def my_count  
+    results = []
+    if block_given? 
+      self.each do |element| 
+        results << element if yield(element) 
+      end 
+    return results.length  
+    else 
+      return self.length 
+    end
   end
-  # my_each
+ 
   # Your code goes here
 end
 
@@ -39,6 +81,4 @@ class Array
     end
     return self
   end 
-
-
 end
